@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%bcond_with	fwupd		# build with fwupd
+%bcond_without	fwupd		# build without fwupd
 %define		kdeplasmaver	6.1.2
 %define		qtver		5.15.2
 %define		kpname		discover
@@ -29,7 +29,7 @@ BuildRequires:	Qt6Widgets-devel >= %{qtver}
 BuildRequires:	Qt6Xml-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16.0
 BuildRequires:	flatpak-devel >= 1.14.5
-%{?with fwupd:BuildRequires:	fwupd-devel >= 1.9.4}
+%{?with_fwupd:BuildRequires:	fwupd-devel >= 1.9.4}
 BuildRequires:	kf6-extra-cmake-modules >= 1.4.0
 BuildRequires:	kf6-karchive-devel
 BuildRequires:	kf6-kconfig-devel
@@ -95,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f discover.lang
 %defattr(644,root,root,755)
 %dir %{_libdir}/qt6/plugins/discover
-%{?with fwupd:%attr(755,root,root) %{_libdir}/qt6/plugins/discover/fwupd-backend.so}
+%{?with_fwupd:%attr(755,root,root) %{_libdir}/qt6/plugins/discover/fwupd-backend.so}
 %{_desktopdir}/org.kde.discover.desktop
 %attr(755,root,root) %{_bindir}/plasma-discover
 %{_libdir}/plasma-discover
