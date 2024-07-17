@@ -2,17 +2,17 @@
 # Conditional build:
 %bcond_with	tests		# build with tests
 %bcond_without	fwupd		# build without fwupd
-%define		kdeplasmaver	6.1.2
+%define		kdeplasmaver	6.1.3
 %define		qtver		5.15.2
 %define		kpname		discover
 Summary:	discover
 Name:		kp6-%{kpname}
-Version:	6.1.2
+Version:	6.1.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	99e8f8537fd445f32b6bb1740b312125
+# Source0-md5:	de2b5488e9e74df6c0f1a5e4faf1e3a7
 URL:		http://www.kde.org/
 BuildRequires:	AppStream-qt6-devel >= 1.0
 BuildRequires:	Qt6Concurrent-devel >= %{qtver}
