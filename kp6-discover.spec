@@ -52,6 +52,7 @@ BuildRequires:	kf6-kwallet-devel
 BuildRequires:	kf6-kwidgetsaddons-devel
 BuildRequires:	kf6-purpose-devel
 BuildRequires:	kf6-solid-devel
+BuildRequires:	kirigami-addons-devel
 BuildRequires:	libmarkdown-devel
 BuildRequires:	ninja
 BuildRequires:	qt6-build >= %{qtver}
