@@ -46,6 +46,7 @@ BuildRequires:	kf6-kitemmodels-devel
 BuildRequires:	kf6-kitemviews-devel
 BuildRequires:	kf6-knewstuff-devel
 BuildRequires:	kf6-knotifications-devel
+BuildRequires:	kf6-kstatusnotifieritem-devel
 BuildRequires:	kf6-ktextwidgets-devel
 BuildRequires:	kf6-kwallet-devel
 BuildRequires:	kf6-kwidgetsaddons-devel
