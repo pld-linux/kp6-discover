@@ -8,7 +8,7 @@
 Summary:	discover
 Name:		kp6-%{kpname}
 Version:	6.1.5
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
@@ -55,6 +55,7 @@ BuildRequires:	kf6-solid-devel
 BuildRequires:	kirigami-addons-devel
 BuildRequires:	libmarkdown-devel
 BuildRequires:	ninja
+BuildRequires:	qcoro-qt6-devel
 BuildRequires:	qt6-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	tar >= 1:1.22
