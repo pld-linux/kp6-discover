@@ -32,6 +32,7 @@ BuildRequires:	flatpak-devel >= 1.14.5
 %{?with_fwupd:BuildRequires:	fwupd-devel >= 1.9.4}
 BuildRequires:	kf6-extra-cmake-modules >= 1.4.0
 BuildRequires:	kf6-karchive-devel
+BuildRequires:	kf6-kcmutils-devel
 BuildRequires:	kf6-kconfig-devel
 BuildRequires:	kf6-kconfigwidgets-devel
 BuildRequires:	kf6-kcoreaddons-devel
