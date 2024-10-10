@@ -1,7 +1,8 @@
 #
 # Conditional build:
-%bcond_with	tests		# build with tests
-%bcond_without	fwupd		# build without fwupd
+%bcond_with	tests		# test suite
+%bcond_without	fwupd		# fwupd support
+
 %define		kdeplasmaver	6.2.0
 %define		qtver		5.15.2
 %define		kpname		discover
@@ -86,6 +87,7 @@ czytać recenzje, aby wybrać idealną aplikację.
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	-DKDE_INSTALL_DOCBUNDLEDIR=%{_kdedocdir}
+
 %ninja_build -C build
 
 %if %{with tests}
@@ -94,6 +96,7 @@ ctest
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %ninja_install -C build
 
 # not supported by glibc yet
@@ -106,33 +109,35 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f discover.lang
 %defattr(644,root,root,755)
-%dir %{_libdir}/qt6/plugins/discover
-%{?with_fwupd:%attr(755,root,root) %{_libdir}/qt6/plugins/discover/fwupd-backend.so}
-%{_desktopdir}/org.kde.discover.desktop
 %attr(755,root,root) %{_bindir}/plasma-discover
-%{_libdir}/plasma-discover
-%{_desktopdir}/org.kde.discover.urlhandler.desktop
-%{_iconsdir}/hicolor/*x*/apps/plasmadiscover.png
-%{_iconsdir}/hicolor/scalable/apps/plasmadiscover.svg*
-%dir %{_datadir}/kxmlgui5/plasmadiscover
-%{_datadir}/kxmlgui5/plasmadiscover/plasmadiscoverui.rc
-%{_datadir}/metainfo/org.kde.discover.appdata.xml
-/etc/xdg/autostart/org.kde.discover.notifier.desktop
-%attr(755,root,root) %{_libexecdir}/DiscoverNotifier
-%{_desktopdir}/org.kde.discover.notifier.desktop
-%{_datadir}/knotifications6/discoverabstractnotifier.notifyrc
-%{_datadir}/qlogging-categories6/discover.categories
 %attr(755,root,root) %{_bindir}/plasma-discover-update
-%{_desktopdir}/org.kde.discover.snap.desktop
-%{_libdir}/qt6/plugins/plasma/kcms/systemsettings/kcm_updates.so
-%{_desktopdir}/kcm_updates.desktop
+%dir %{_libdir}/plasma-discover
+%attr(755,root,root) %{_libdir}/plasma-discover/lib*.so
+%dir %{_libdir}/qt6/plugins/discover
+%attr(755,root,root) %{_libdir}/qt6/plugins/discover/flatpak-backend.so
+%if %{with fwupd}
+%attr(755,root,root) %{_libdir}/qt6/plugins/discover/fwupd-backend.so
+%endif
+%attr(755,root,root) %{_libdir}/qt6/plugins/discover/kns-backend.so
 %dir %{_libdir}/qt6/plugins/discover-notifier
-%{_libdir}/qt6/plugins/discover-notifier/FlatpakNotifier.so
-%{_libdir}/qt6/plugins/discover/flatpak-backend.so
-%{_libdir}/qt6/plugins/discover/kns-backend.so
-%{_desktopdir}/org.kde.discover-flatpak.desktop
-%{_iconsdir}/hicolor/scalable/apps/flatpak-discover.svg
+%attr(755,root,root) %{_libdir}/qt6/plugins/discover-notifier/FlatpakNotifier.so
+%attr(755,root,root) %{_libdir}/qt6/plugins/plasma/kcms/systemsettings/kcm_updates.so
+%attr(755,root,root) %{_libexecdir}/DiscoverNotifier
+%{_datadir}/knotifications6/discoverabstractnotifier.notifyrc
+%{_datadir}/kxmlgui5/plasmadiscover
 %dir %{_datadir}/libdiscover
 %dir %{_datadir}/libdiscover/categories
 %{_datadir}/libdiscover/categories/flatpak-backend-categories.xml
+%{_datadir}/metainfo/org.kde.discover.appdata.xml
 %{_datadir}/metainfo/org.kde.discover.flatpak.appdata.xml
+%{_datadir}/qlogging-categories6/discover.categories
+%{_desktopdir}/kcm_updates.desktop
+%{_desktopdir}/org.kde.discover.desktop
+%{_desktopdir}/org.kde.discover.notifier.desktop
+%{_desktopdir}/org.kde.discover.snap.desktop
+%{_desktopdir}/org.kde.discover.urlhandler.desktop
+%{_desktopdir}/org.kde.discover-flatpak.desktop
+%{_iconsdir}/hicolor/*x*/apps/plasmadiscover.png
+%{_iconsdir}/hicolor/scalable/apps/flatpak-discover.svg
+%{_iconsdir}/hicolor/scalable/apps/plasmadiscover.svg*
+/etc/xdg/autostart/org.kde.discover.notifier.desktop
