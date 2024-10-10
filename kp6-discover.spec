@@ -59,7 +59,7 @@ BuildRequires:	libmarkdown-devel
 BuildRequires:	ninja
 BuildRequires:	qcoro-qt6-devel
 BuildRequires:	qt6-build >= %{qtver}
-BuildRequires:	rpmbuild(macros) >= 1.164
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Suggests:	flatpak
