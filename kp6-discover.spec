@@ -44,6 +44,7 @@ BuildRequires:	kf6-ki18n-devel
 BuildRequires:	kf6-kiconthemes-devel
 BuildRequires:	kf6-kidletime-devel
 BuildRequires:	kf6-kio-devel
+BuildRequires:	kf6-kirigami-addons-devel
 BuildRequires:	kf6-kitemmodels-devel
 BuildRequires:	kf6-kitemviews-devel
 BuildRequires:	kf6-knewstuff-devel
@@ -54,7 +55,6 @@ BuildRequires:	kf6-kwallet-devel
 BuildRequires:	kf6-kwidgetsaddons-devel
 BuildRequires:	kf6-purpose-devel
 BuildRequires:	kf6-solid-devel
-BuildRequires:	kirigami-addons-devel
 BuildRequires:	libmarkdown-devel
 BuildRequires:	ninja
 BuildRequires:	qcoro-qt6-devel
