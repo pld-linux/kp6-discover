@@ -5,7 +5,8 @@
 %define		kdeplasmaver	6.2.0
 %define		qtver		5.15.2
 %define		kpname		discover
-Summary:	discover
+Summary:	Plasma Discover - KDE Software Center
+Summary(pl.UTF-8):	Odkrywca - Ośrodek programów KDE
 Name:		kp6-%{kpname}
 Version:	6.2.0
 Release:	1
@@ -13,7 +14,7 @@ License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
 # Source0-md5:	94f87f06a9f143ee934e7151d094cdde
-URL:		http://www.kde.org/
+URL:		https://kde.org/
 BuildRequires:	AppStream-qt6-devel >= 1.0
 BuildRequires:	Qt6Concurrent-devel >= %{qtver}
 BuildRequires:	Qt6Core-devel >= %{qtver}
@@ -67,7 +68,14 @@ Obsoletes:	kp5-%{kpname} < %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-discover
+Discover helps you find and install applications, games, and tools.
+You can search or browse by category, and look at screenshots and read
+reviews to help you pick the perfect app.
+
+%description -l pl.UTF-8
+Odkrywca pozwala znajdować i instalować aplikacje, gry i narzędzia.
+Można wyszukiwać i przeglądać wg kategorii, oglądać zrzuty ekranu i
+czytać recenzje, aby wybrać idealną aplikację.
 
 %prep
 %setup -q -n %{kpname}-%{version}
