@@ -3,20 +3,21 @@
 %bcond_with	tests		# test suite
 %bcond_without	fwupd		# fwupd support
 
-%define		kdeplasmaver	6.2.5
+%define		kdeplasmaver	6.3.0
 %define		qtver		5.15.2
 %define		kpname		discover
 Summary:	Plasma Discover - KDE Software Center
 Summary(pl.UTF-8):	Odkrywca - Ośrodek programów KDE
 Name:		kp6-%{kpname}
-Version:	6.2.5
+Version:	6.3.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	6f1aca4c4d4735a351df51f0490dcc1f
+# Source0-md5:	b1ce839e413e2d226001ab405e500dad
 URL:		https://kde.org/
 BuildRequires:	AppStream-qt6-devel >= 1.0
+BuildRequires:	PackageKit-qt6-devel
 BuildRequires:	Qt6Concurrent-devel >= %{qtver}
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -119,7 +120,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt6/plugins/discover/fwupd-backend.so
 %endif
 %attr(755,root,root) %{_libdir}/qt6/plugins/discover/kns-backend.so
+%attr(755,root,root) %{_libdir}/qt6/plugins/discover/packagekit-backend.so
 %dir %{_libdir}/qt6/plugins/discover-notifier
+%attr(755,root,root) %{_libdir}/qt6/plugins/discover-notifier/DiscoverPackageKitNotifier.so
 %attr(755,root,root) %{_libdir}/qt6/plugins/discover-notifier/FlatpakNotifier.so
 %attr(755,root,root) %{_libdir}/qt6/plugins/plasma/kcms/systemsettings/kcm_updates.so
 %attr(755,root,root) %{_libexecdir}/DiscoverNotifier
@@ -128,6 +131,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/libdiscover
 %dir %{_datadir}/libdiscover/categories
 %{_datadir}/libdiscover/categories/flatpak-backend-categories.xml
+%{_datadir}/libdiscover/categories/packagekit-backend-categories.xml
 %{_datadir}/metainfo/org.kde.discover.appdata.xml
 %{_datadir}/metainfo/org.kde.discover.flatpak.appdata.xml
 %{_datadir}/qlogging-categories6/discover.categories
@@ -141,3 +145,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/flatpak-discover.svg
 %{_iconsdir}/hicolor/scalable/apps/plasmadiscover.svg*
 /etc/xdg/autostart/org.kde.discover.notifier.desktop
+%{_datadir}/metainfo/org.kde.discover.packagekit.appdata.xml
