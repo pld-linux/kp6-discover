@@ -3,18 +3,18 @@
 %bcond_with	tests		# test suite
 %bcond_without	fwupd		# fwupd support
 
-%define		kdeplasmaver	6.4.4
+%define		kdeplasmaver	6.4.5
 %define		qtver		5.15.2
 %define		kpname		discover
 Summary:	Plasma Discover - KDE Software Center
 Summary(pl.UTF-8):	Odkrywca - Ośrodek programów KDE
 Name:		kp6-%{kpname}
-Version:	6.4.4
+Version:	6.4.5
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	328b5f55fd21129c9184b7d1b672a0bf
+# Source0-md5:	1d8de36c7332f5683fa018f9136646cf
 URL:		https://kde.org/
 BuildRequires:	AppStream-qt6-devel >= 1.0
 BuildRequires:	PackageKit-qt6-devel
@@ -67,6 +67,7 @@ BuildRequires:	xz
 Suggests:	flatpak
 Suggests:	fwupd
 Requires(post,postun):	desktop-file-utils
+%requires_eq_to Qt6Core Qt6Core-devel
 Obsoletes:	kp5-%{kpname} < 6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
