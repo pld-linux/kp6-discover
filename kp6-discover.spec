@@ -3,18 +3,18 @@
 %bcond_with	tests		# test suite
 %bcond_without	fwupd		# fwupd support
 
-%define		kdeplasmaver	6.4.5
+%define		kdeplasmaver	6.5.0
 %define		qtver		5.15.2
 %define		kpname		discover
 Summary:	Plasma Discover - KDE Software Center
 Summary(pl.UTF-8):	Odkrywca - Ośrodek programów KDE
 Name:		kp6-%{kpname}
-Version:	6.4.5
-Release:	2
+Version:	6.5.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	1d8de36c7332f5683fa018f9136646cf
+# Source0-md5:	30169f924377bbf222d0ee6d31303861
 URL:		https://kde.org/
 BuildRequires:	AppStream-qt6-devel >= 1.0
 BuildRequires:	PackageKit-qt6-devel
@@ -121,18 +121,18 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/plasma-discover
 %dir %{_libdir}/plasma-discover
-%attr(755,root,root) %{_libdir}/plasma-discover/lib*.so
+%{_libdir}/plasma-discover/lib*.so
 %dir %{_libdir}/qt6/plugins/discover
-%attr(755,root,root) %{_libdir}/qt6/plugins/discover/flatpak-backend.so
+%{_libdir}/qt6/plugins/discover/flatpak-backend.so
 %if %{with fwupd}
-%attr(755,root,root) %{_libdir}/qt6/plugins/discover/fwupd-backend.so
+%{_libdir}/qt6/plugins/discover/fwupd-backend.so
 %endif
-%attr(755,root,root) %{_libdir}/qt6/plugins/discover/kns-backend.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/discover/packagekit-backend.so
+%{_libdir}/qt6/plugins/discover/kns-backend.so
+%{_libdir}/qt6/plugins/discover/packagekit-backend.so
 %dir %{_libdir}/qt6/plugins/discover-notifier
-%attr(755,root,root) %{_libdir}/qt6/plugins/discover-notifier/DiscoverPackageKitNotifier.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/discover-notifier/FlatpakNotifier.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/plasma/kcms/systemsettings/kcm_updates.so
+%{_libdir}/qt6/plugins/discover-notifier/DiscoverPackageKitNotifier.so
+%{_libdir}/qt6/plugins/discover-notifier/FlatpakNotifier.so
+%{_libdir}/qt6/plugins/plasma/kcms/systemsettings/kcm_updates.so
 %attr(755,root,root) %{_libexecdir}/DiscoverNotifier
 %{_datadir}/knotifications6/discoverabstractnotifier.notifyrc
 %{_datadir}/kxmlgui5/plasmadiscover
@@ -145,10 +145,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/qlogging-categories6/discover.categories
 %{_desktopdir}/kcm_updates.desktop
 %{_desktopdir}/org.kde.discover.desktop
+%{_desktopdir}/org.kde.discover.flatpak.desktop
 %{_desktopdir}/org.kde.discover.notifier.desktop
 %{_desktopdir}/org.kde.discover.snap.desktop
 %{_desktopdir}/org.kde.discover.urlhandler.desktop
-%{_desktopdir}/org.kde.discover-flatpak.desktop
 %{_iconsdir}/hicolor/*x*/apps/plasmadiscover.png
 %{_iconsdir}/hicolor/scalable/apps/flatpak-discover.svg
 %{_iconsdir}/hicolor/scalable/apps/plasmadiscover.svg*
