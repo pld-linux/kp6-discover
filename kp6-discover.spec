@@ -3,18 +3,18 @@
 %bcond_with	tests		# test suite
 %bcond_without	fwupd		# fwupd support
 
-%define		kdeplasmaver	6.7.5
+%define		kdeplasmaver	6.8.0
 %define		qtver		5.15.2
 %define		kpname		discover
 Summary:	Plasma Discover - KDE Software Center
 Summary(pl.UTF-8):	Odkrywca - Ośrodek programów KDE
 Name:		kp6-%{kpname}
-Version:	6.7.5
+Version:	6.8.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	c2c338008b3385df85d691bf09efabd5
+# Source0-md5:	2971e5e72d8e3caafe56034219dd6147
 URL:		https://kde.org/
 BuildRequires:	AppStream-qt6-devel >= 1.0
 BuildRequires:	PackageKit-qt6-devel
@@ -123,6 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/plasma-discover
 %{_libdir}/plasma-discover/lib*.so
 %dir %{_libdir}/qt6/plugins/discover
+%{_libdir}/qt6/plugins/discover/appstream-preview-backend.so
 %{_libdir}/qt6/plugins/discover/flatpak-backend.so
 %if %{with fwupd}
 %{_libdir}/qt6/plugins/discover/fwupd-backend.so
@@ -153,4 +154,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/flatpak-discover.svg
 %{_iconsdir}/hicolor/scalable/apps/plasmadiscover.svg*
 /etc/xdg/autostart/org.kde.discover.notifier.desktop
+%{_datadir}/metainfo/org.kde.discover.appstreampreview.metainfo.xml
 %{_datadir}/metainfo/org.kde.discover.packagekit.appdata.xml
+%{_desktopdir}/org.kde.discover.appstreampreview.desktop
+%{_datadir}/config.kcfg/discover-appstream-settings.kcfg
+%{_datadir}/config.kcfg/discover-updates.kcfg
+%{_datadir}/config.kcfg/discoversettings-kcm.kcfg
+%{_datadir}/config.kcfg/discoversettings.kcfg
